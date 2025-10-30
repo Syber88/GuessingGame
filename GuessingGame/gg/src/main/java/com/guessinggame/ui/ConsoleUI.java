@@ -14,5 +14,18 @@ public class ConsoleUI {
         System.out.println(message);
     }
 
+    public int askForNumber(){
+        while (true){
+            System.out.println("Enter a number");
+            try {
+                int number = Integer.parseInt(this.scanner.nextLine());
+                return number;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter a proper number");
+            }
+            
+        }
+    }
+
 
 }
