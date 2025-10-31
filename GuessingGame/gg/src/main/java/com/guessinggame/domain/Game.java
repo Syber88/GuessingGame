@@ -25,11 +25,7 @@ public class Game {
 
                 int playerGuess = userInterface.askForNumber("What is your guess?");
                 OutCome outcome = getOutcome(secret, playerGuess);
-                
-                
-
-
-
+                this.scoreCounter(outcome);
             } catch (Exception e){
                 System.out.println("Error: " + e.getMessage());
             }
@@ -53,6 +49,21 @@ public class Game {
 
     private void lossIncrement(){
         this.playerLossCount++;
+    }
+    
+    private void scoreCounter(OutCome result){
+        if (result == OutCome.LOSS){
+            this.winIncrement();
+        }
+        this.lossIncrement();
+    }
+
+    public int getPlayerWinCount(){
+        return this.playerWinCount;
+    }
+
+    public int getPlayerLossCount(){
+        return this.playerLossCount;
     }
 
 

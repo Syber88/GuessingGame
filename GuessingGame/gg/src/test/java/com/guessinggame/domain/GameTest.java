@@ -36,5 +36,10 @@ public class GameTest {
         OutCome result = game.getOutcome(18, 18);
         assertEquals(result, OutCome.WIN);
     }
+
+    @Test
+    void gameIncrementTest(){
+        assertEquals(game.getPlayerWinCount(), 0);
+    }
     
 }
