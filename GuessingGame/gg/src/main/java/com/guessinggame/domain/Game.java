@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Game {
     private int playerWinCount;
+    private int playerLossCount;
     private ConsoleUI userInterface;
     private Random random;
 
@@ -23,6 +24,8 @@ public class Game {
                 int secret = generateSecret(start, end);
 
                 int playerGuess = userInterface.askForNumber("What is your guess?");
+                OutCome outcome = getOutcome(secret, playerGuess);
+                
                 
 
 
@@ -42,6 +45,14 @@ public class Game {
             return OutCome.WIN;
         }
         return OutCome.LOSS;
+    }
+
+    private void winIncrement(){
+        this.playerWinCount++;
+    }
+
+    private void lossIncrement(){
+        this.playerLossCount++;
     }
 
 
