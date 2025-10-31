@@ -24,5 +24,11 @@ public class GameTest {
         int secret = game.generateSecret(1, 5);
         assertTrue(secret >= 0 && secret <= 5);
     }
+
+    @Test
+    void gameGetOutcomeLoss(){
+        OutCome result = game.getOutcome(0, 0);
+        assertEquals(result, OutCome.LOSS);
+    }
     
 }
