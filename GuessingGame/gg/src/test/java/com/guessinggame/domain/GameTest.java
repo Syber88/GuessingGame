@@ -27,8 +27,14 @@ public class GameTest {
 
     @Test
     void gameGetOutcomeLoss(){
-        OutCome result = game.getOutcome(0, 0);
+        OutCome result = game.getOutcome(15, 18);
         assertEquals(result, OutCome.LOSS);
+    }
+
+    @Test
+    void gameGetOutcomeWin(){
+        OutCome result = game.getOutcome(18, 18);
+        assertEquals(result, OutCome.WIN);
     }
     
 }

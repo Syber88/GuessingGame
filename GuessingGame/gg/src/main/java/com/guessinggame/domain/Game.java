@@ -38,6 +38,9 @@ public class Game {
     }
 
     public OutCome getOutcome(int secret, int playerGuess){
+        if (playerGuess == secret){
+            return OutCome.WIN;
+        }
         return OutCome.LOSS;
     }
 
