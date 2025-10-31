@@ -38,8 +38,18 @@ public class GameTest {
     }
 
     @Test
-    void gameIncrementTest(){
-        assertEquals(game.getPlayerWinCount(), 0);
+    void gameIncrementTestWin(){
+        assertEquals(0, game.getPlayerWinCount());
+        game.scoreCounter(OutCome.WIN);
+        game.scoreCounter(OutCome.WIN);
+        assertEquals(2, game.getPlayerWinCount());
+    }
+    @Test
+    void gameIncrementTestLoss(){
+        assertEquals(0, game.getPlayerLossCount());
+        game.scoreCounter(OutCome.LOSS);
+        game.scoreCounter(OutCome.LOSS);
+        assertEquals(2, game.getPlayerLossCount());
     }
     
 }

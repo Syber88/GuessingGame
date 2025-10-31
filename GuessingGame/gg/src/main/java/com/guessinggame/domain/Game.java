@@ -51,8 +51,8 @@ public class Game {
         this.playerLossCount++;
     }
     
-    private void scoreCounter(OutCome result){
-        if (result == OutCome.LOSS){
+    public void scoreCounter(OutCome result){
+        if (result == OutCome.WIN){
             this.winIncrement();
         }
         this.lossIncrement();
