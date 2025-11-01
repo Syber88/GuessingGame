@@ -38,8 +38,10 @@ public class Game {
 
     public OutCome getOutcome(int secret, int playerGuess){
         if (playerGuess == secret){
+            userInterface.showMessage(OutCome.WIN.getMessage());
             return OutCome.WIN;
         }
+        userInterface.showMessage(OutCome.LOSS.getMessage());
         return OutCome.LOSS;
     }
 
