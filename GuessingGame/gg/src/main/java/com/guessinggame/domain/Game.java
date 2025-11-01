@@ -16,7 +16,7 @@ public class Game {
         this.userInterface = new ConsoleUI(scanner);
     }
 
-    public void start(Scanner scanner){
+    public void start(){
         while(true){
             try {
                 int start = userInterface.askForNumber("Enter the start range");    
