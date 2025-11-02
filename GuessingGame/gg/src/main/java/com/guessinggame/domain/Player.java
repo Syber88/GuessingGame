@@ -9,11 +9,10 @@ public class Player {
         this.name = name;
     }
 
+    public String toString(){
+        return this.name + "Wins: " + this.wins + "\n" + "Losses: " + this.losses;
+    }
     
-
-
-
-
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -14,6 +14,11 @@ public class ConsoleUI {
         System.out.println(message);
     }
 
+    public void showMessage(int wins, int losses){
+        String inGameScores = "Wins: " + wins + "\nLosses: " + losses;
+        showMessage(inGameScores);
+    }   
+
     public int askForNumber(String message){
         while (true){
             showMessage(message);
@@ -23,7 +28,6 @@ public class ConsoleUI {
             } catch (NumberFormatException e) {
                 showMessage("Enter a proper number");
             }
-            
         }
     }
 

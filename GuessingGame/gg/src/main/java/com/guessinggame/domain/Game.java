@@ -19,13 +19,18 @@ public class Game {
     public void start(){
         while(true){
             try {
-                int start = userInterface.askForNumber("Enter the start range");    
-                int end = userInterface.askForNumber("Enter the end range");
+                int start = userInterface.askForNumber("Enter the start range:");    
+                int end = userInterface.askForNumber("Enter the end range:");
                 int secret = generateSecret(start, end);
 
                 int playerGuess = userInterface.askForNumber("What is your guess?");
+                if (isOutOfRange(playerGuess, start, end)){
+                    userInterface.showMessage("Please enter a number wihtin the range <" + start + '-' + end);
+                    continue;
+                }
                 OutCome outcome = getOutcome(secret, playerGuess);
                 this.scoreCounter(outcome);
+                userInterface.showMessage(this.getPlayerWinCount(), this.getPlayerLossCount());
             } catch (Exception e){
                 System.out.println("Error: " + e.getMessage());
             }
@@ -35,6 +40,13 @@ public class Game {
     public int generateSecret(int start, int end){
         return random.nextInt((end - start + 1 ) + start);
     }
+
+        public boolean isOutOfRange(int playerGuess, int startRange, int endRange){
+            if (playerGuess < startRange || playerGuess > endRange){
+                return true;
+            }
+            return false;
+        }
 
     public OutCome getOutcome(int secret, int playerGuess){
         if (playerGuess == secret){
