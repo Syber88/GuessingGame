@@ -12,6 +12,14 @@ public class Player {
     public String toString(){
         return this.name + "Wins: " + this.wins + "\n" + "Losses: " + this.losses;
     }
+
+    public String getName(){
+        return this.name;
+    }
+
+    // public String allTimeStats(){
+    //     return 
+    // }
     
     @Override
     public int hashCode() {

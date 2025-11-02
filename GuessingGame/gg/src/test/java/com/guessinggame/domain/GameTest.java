@@ -11,12 +11,15 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class GameTest {
     Game game;
+    Player player;
 
 
     @BeforeEach
     void setUp(){
         Scanner scanner = new Scanner(new ByteArrayInputStream(new byte[0]));
-        this.game = new Game(scanner);
+        Player player = new Player("Jimmy Neutron");
+        this.player = player;
+        this.game = new Game(scanner, player);
     }
 
     @Test
@@ -50,6 +53,16 @@ public class GameTest {
         game.scoreCounter(OutCome.LOSS);
         game.scoreCounter(OutCome.LOSS);
         assertEquals(2, game.getPlayerLossCount());
+    }
+
+    @Test
+    void gameTestAskForNameFail(){
+        assertNotEquals("James` Neutron", player.getName());
+    }
+
+    @Test
+    void gameTestAskForNameSuccess(){
+        assertEquals("Jimmy Neutron", player.getName());
     }
     
 }

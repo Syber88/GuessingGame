@@ -5,12 +5,14 @@ import com.guessinggame.ui.ConsoleUI;
 import java.util.Random;
 
 public class Game {
+    private Player player;
     private int playerWinCount;
     private int playerLossCount;
     private ConsoleUI userInterface;
     private Random random;
 
-    public Game(Scanner scanner){
+    public Game(Scanner scanner, Player player){
+        this.player = player;
         this.random = new Random();
         this.playerWinCount = 0;
         this.userInterface = new ConsoleUI(scanner);
@@ -19,6 +21,7 @@ public class Game {
     public void start(){
         while(true){
             try {
+                userInterface.showMessage("GREETINGS " + player.getName());
                 int start = userInterface.askForNumber("Enter the start range:");    
                 int end = userInterface.askForNumber("Enter the end range:");
                 int secret = generateSecret(start, end);
@@ -79,6 +82,4 @@ public class Game {
     public int getPlayerLossCount(){
         return this.playerLossCount;
     }
-
-
 }
