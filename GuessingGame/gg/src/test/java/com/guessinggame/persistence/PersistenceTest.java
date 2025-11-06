@@ -23,7 +23,7 @@ public class PersistenceTest {
 
     @Test
     void playerExistingSucceedsTest(){
-        boolean exists = history.doesPlayerExists(player);
+        boolean exists = history.playerExists(player);
         assertTrue(exists);
     }
 

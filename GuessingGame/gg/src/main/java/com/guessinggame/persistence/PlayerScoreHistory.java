@@ -27,15 +27,18 @@ public class PlayerScoreHistory {
         }
     }
 
-    public boolean doesPlayerExists(Player player){
-        return true;                      
+    public boolean playerExists(Player player) throws IOException{
+        Map<String, Map<String, Integer>> data = readPlayerHistoryFile(fileName);
+        if (data.containsKey(player.getName())){
+            return true;
+        }
+        }
     }
 
     public Map<String, Map<String, Integer>> readPlayerHistoryFile(String fileName) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Map<String, Integer>> data = mapper.readValue(new File(fileName), Map.class);
         return data;
-
     }
 
     /**
