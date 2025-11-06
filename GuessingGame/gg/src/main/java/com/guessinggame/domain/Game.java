@@ -19,9 +19,9 @@ public class Game {
     }
 
     public void start(){
+        userInterface.showMessage("GREETINGS " + player.getName());
         while(true){
             try {
-                userInterface.showMessage("GREETINGS " + player.getName());
                 int start = userInterface.askForNumber("Enter the start range:");    
                 int end = userInterface.askForNumber("Enter the end range:");
                 int secret = generateSecret(start, end);
