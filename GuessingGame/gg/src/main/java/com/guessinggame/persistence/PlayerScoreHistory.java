@@ -31,9 +31,10 @@ public class PlayerScoreHistory {
         return true;                      
     }
 
-    public void openFile(String fileName) throws IOException{
+    public Map<String, Map<String, Integer>> readPlayerHistoryFile(String fileName) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Map<String, Integer>> data = mapper.readValue(new File(fileName), Map.class);
+        return data;
 
     }
 

@@ -2,6 +2,9 @@ package com.guessinggame.persistence;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Map;
+
 import com.guessinggame.domain.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -19,9 +22,25 @@ public class PersistenceTest {
     }
 
     @Test
-    void playerExistingSucceeds(){
+    void playerExistingSucceedsTest(){
         boolean exists = history.doesPlayerExists(player);
         assertTrue(exists);
+    }
+
+    @Test 
+    void readPlayerHistoryFileTestWins() throws Exception {
+        Map<String, Map<String, Integer>> data = history.readPlayerHistoryFile("src/test/resources/ScoreHistoryTest.json");
+        int wins = data.get("john").get("wins");
+        assertEquals(5, wins);
+        
+    }
+
+    @Test 
+    void readPlayerHistoryFileTestLosses() throws Exception {
+        Map<String, Map<String, Integer>> data = history.readPlayerHistoryFile("src/test/resources/ScoreHistoryTest.json");
+        int losses = data.get("max").get("losses");
+        assertEquals(1, losses);
+        
     }
     
 }

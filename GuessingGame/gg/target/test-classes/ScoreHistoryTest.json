@@ -1,0 +1,10 @@
+{
+  "john": {
+    "wins": 5,
+    "losses": 2
+  },
+  "max": {
+    "wins": 10,
+    "losses": 1
+  }
+}
