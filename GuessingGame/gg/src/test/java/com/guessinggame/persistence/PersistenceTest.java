@@ -16,14 +16,14 @@ public class PersistenceTest {
 
     @BeforeEach
     void setUp(){
-        this.player = new Player("Jimmy Neutron");
+        this.player = new Player("john");
         this.history = new PlayerScoreHistory(player);
 
     }
 
     @Test
-    void playerExistingSucceedsTest(){
-        boolean exists = history.playerExists(player);
+    void playerExistingSucceedsTest()throws Exception {
+        boolean exists = history.playerExists(player, "src/test/resources/ScoreHistoryTest.json");
         assertTrue(exists);
     }
 

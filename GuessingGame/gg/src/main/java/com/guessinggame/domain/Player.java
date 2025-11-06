@@ -17,10 +17,28 @@ public class Player {
         return this.name;
     }
 
+    
+
     // public String allTimeStats(){
     //     return 
     // }
     
+    public int getWins() {
+        return wins;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

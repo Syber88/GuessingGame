@@ -8,13 +8,19 @@ import java.util.Map;
 
 
 public class PlayerScoreHistory {
-    private Player player;
-    private String fileName = "PlayerScoreHistory.json";
+    // private Player player;
+    private final String fileName;
 
-    public PlayerScoreHistory(Player player){
-        this.player = player;
+    public PlayerScoreHistory(){
+        this.fileName = "PlayerScoreHistory.json";
+    }
+
+    public String getFileName(){
+        return this.fileName;
+    }
+
+    public void createFile(){
         File file = new File(fileName);
-
         try {
             if (file.createNewFile()){
                 System.out.println("File created: " + file.getName());
@@ -27,18 +33,42 @@ public class PlayerScoreHistory {
         }
     }
 
-    public boolean playerExists(Player player) throws IOException{
+    public boolean playerExists(String name, String fileName) throws IOException{
         Map<String, Map<String, Integer>> data = readPlayerHistoryFile(fileName);
-        if (data.containsKey(player.getName())){
+        if (data.containsKey(name)){
             return true;
         }
-        }
+        return false;
     }
+    
 
     public Map<String, Map<String, Integer>> readPlayerHistoryFile(String fileName) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Map<String, Integer>> data = mapper.readValue(new File(fileName), Map.class);
+        Map<String, Map<String, Integer>> data = mapper.readValue(new File(fileName), 
+        new com.fasterxml.jackson.core.type.TypeReference<Map<String, Map<String, Integer>>>() {});
         return data;
+    }
+
+    public void saveStats(Player player, String fileName)throws Exception{
+        /**
+         * we will be getting the in-game loss and win from the game variable. think about that
+         */
+        Map<String, Map<String, Integer>> data = readPlayerHistoryFile(fileName);
+        Map<String, Integer> playerMap = data.get(player.getName());
+
+        int wins = playerMap.get("wins"), losses = playerMap.get("losses"); 
+        wins += player.getWins(); 
+        losses += player.getLosses();
+
+        playerMap.put("wins", wins);
+        playerMap.put("losses", losses);
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File(fileName), mapper);
+
+
+
+
     }
 
     /**
