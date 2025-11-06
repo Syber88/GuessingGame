@@ -17,13 +17,13 @@ public class PersistenceTest {
     @BeforeEach
     void setUp(){
         this.player = new Player("john");
-        this.history = new PlayerScoreHistory(player);
+        this.history = new PlayerScoreHistory();
 
     }
 
     @Test
     void playerExistingSucceedsTest()throws Exception {
-        boolean exists = history.playerExists(player, "src/test/resources/ScoreHistoryTest.json");
+        boolean exists = history.playerExists(player.getName(), "src/test/resources/ScoreHistoryTest.json");
         assertTrue(exists);
     }
 
@@ -32,7 +32,6 @@ public class PersistenceTest {
         Map<String, Map<String, Integer>> data = history.readPlayerHistoryFile("src/test/resources/ScoreHistoryTest.json");
         int wins = data.get("john").get("wins");
         assertEquals(5, wins);
-        
     }
 
     @Test 
@@ -40,7 +39,17 @@ public class PersistenceTest {
         Map<String, Map<String, Integer>> data = history.readPlayerHistoryFile("src/test/resources/ScoreHistoryTest.json");
         int losses = data.get("max").get("losses");
         assertEquals(1, losses);
-        
     }
-    
+
+    // @Test
+    // void saveStatsTest(){
+// 
+    // }
+
+    @Test
+    void loadPlayerStatsTest()throws Exception {
+        Player player = history.loadPlayerStats(this.player, "src/test/resources/ScoreHistoryTest.json");
+        assertEquals(5, player.getWins());
+        assertEquals(2, player.getLosses());
+    }
 }

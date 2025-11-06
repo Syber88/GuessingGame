@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class App 
 {
-    public static void main( String[] args ){
+    public static void main( String[] args ) throws Exception{
         Scanner scanner = new Scanner(System.in);
         ConsoleUI ui = new ConsoleUI(scanner);
         PlayerScoreHistory history = new PlayerScoreHistory();
@@ -17,14 +17,15 @@ public class App
         String name = ui.askForName();
         String fileName = history.getFileName();
 
+        boolean loadPreviousState = false;
         if (history.playerExists(name, fileName)){
-            Map<String, Map<String, Integer>> data = history.readPlayerHistoryFile(fileName);
-            
+            loadPreviousState = true;
+            ui.showMessage("Welcome back, Old friend");
         }
         
 
 
-            Player player = new Player(name);
+            // Player player = new Player(name);
         
         Player player = new Player(name);
         Game game = new Game(scanner, player);

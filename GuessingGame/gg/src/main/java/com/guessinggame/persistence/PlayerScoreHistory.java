@@ -65,10 +65,14 @@ public class PlayerScoreHistory {
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(fileName), mapper);
+    }
 
-
-
-
+    public Player loadPlayerStats(Player player, String fileName)throws Exception{
+        Map<String, Map<String, Integer>> data = readPlayerHistoryFile(fileName);
+        Map<String,Integer>playerMap = data.get(player.getName());
+        player.setLosses(playerMap.get("losses"));
+        player.setWins(playerMap.get("wins"));
+        return player;
     }
 
     /**
