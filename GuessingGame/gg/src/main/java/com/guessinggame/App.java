@@ -20,6 +20,10 @@ public class App
         Player player = new Player(name);
         Game game = new Game(scanner, player);
         game.start();
+        /**
+         * after breaking from the loop (start) we will return the player all time stats and average wins and losses
+         * 
+         */
 
         
 

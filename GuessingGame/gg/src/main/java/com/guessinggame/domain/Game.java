@@ -24,6 +24,11 @@ public class Game {
             try {
                 int start = userInterface.askForNumber("Enter the start range:");    
                 int end = userInterface.askForNumber("Enter the end range:");
+
+                if (start < 0 || end < 0){
+                    break;
+                }
+
                 int secret = generateSecret(start, end);
 
                 int playerGuess = userInterface.askForNumber("What is your guess?");

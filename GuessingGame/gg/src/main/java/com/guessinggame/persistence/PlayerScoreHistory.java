@@ -25,7 +25,7 @@ public class PlayerScoreHistory {
     }
 
     public boolean doesPlayerExists(Player player){
-        return tr                         
+        return true;                      
     }
 
     /**
@@ -34,6 +34,7 @@ public class PlayerScoreHistory {
      * if not we continue and write to the file with the new player's name 
      * 
      * Json file so we will be saving in dictionaries
+     * I will use jackson to read and wrise json files
      */
 
 
