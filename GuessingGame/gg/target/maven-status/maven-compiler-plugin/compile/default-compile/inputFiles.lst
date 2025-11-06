@@ -2,4 +2,5 @@
 /home/Syber/Desktop/Java/GuessingGame/gg/src/main/java/com/guessinggame/domain/Game.java
 /home/Syber/Desktop/Java/GuessingGame/gg/src/main/java/com/guessinggame/domain/OutCome.java
 /home/Syber/Desktop/Java/GuessingGame/gg/src/main/java/com/guessinggame/domain/Player.java
+/home/Syber/Desktop/Java/GuessingGame/gg/src/main/java/com/guessinggame/persistence/PlayerScoreHistory.java
 /home/Syber/Desktop/Java/GuessingGame/gg/src/main/java/com/guessinggame/ui/ConsoleUI.java

@@ -12,7 +12,10 @@ public class App
         ConsoleUI ui = new ConsoleUI(scanner);
 
         String name = ui.askForName();
+
         try {
+
+
             Player player = new Player(name);
         } catch(Exception e){
 

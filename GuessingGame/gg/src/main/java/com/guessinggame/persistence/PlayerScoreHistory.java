@@ -3,6 +3,9 @@ package com.guessinggame.persistence;
 import com.guessinggame.domain.*;
 import java.io.File;
 import java.io.IOException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Map;
+
 
 public class PlayerScoreHistory {
     private Player player;
@@ -26,6 +29,12 @@ public class PlayerScoreHistory {
 
     public boolean doesPlayerExists(Player player){
         return true;                      
+    }
+
+    public void openFile(String fileName) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Map<String, Integer>> data = mapper.readValue(new File(fileName), Map.class);
+
     }
 
     /**

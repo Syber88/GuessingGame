@@ -34,6 +34,7 @@ public class ConsoleUI {
     public String askForName(){
         showMessage("What is your name? ");
         String name = scanner.nextLine();
+        name = name.toLowerCase();
         return name;
     }
 }
