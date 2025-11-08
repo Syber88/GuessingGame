@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
+import java.util.HashMap;
 
 
 public class PlayerScoreHistory {
@@ -13,23 +14,18 @@ public class PlayerScoreHistory {
 
     public PlayerScoreHistory(){
         this.fileName = "PlayerScoreHistory.json";
+        createFile(fileName);
     }
 
     public String getFileName(){
         return this.fileName;
     }
 
-    public void createFile(){
+    public void createFile(String fileName){
         File file = new File(fileName);
         try {
-            if (file.createNewFile()){
-                System.out.println("File created: " + file.getName());
-            } else {
-                System.out.println("File already exists");
-            }
+            file.createNewFile();
         } catch (IOException e){
-            System.out.println("an error occured");
-            e.getStackTrace();
         }
     }
 
@@ -44,12 +40,17 @@ public class PlayerScoreHistory {
 
     public Map<String, Map<String, Integer>> readPlayerHistoryFile(String fileName) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Map<String, Integer>> data = mapper.readValue(new File(fileName), 
+        File file = new File(fileName);
+        if (file.length() == 0){
+            return new HashMap<>();
+        }
+        
+        Map<String, Map<String, Integer>> data = mapper.readValue(file, 
         new com.fasterxml.jackson.core.type.TypeReference<Map<String, Map<String, Integer>>>() {});
         return data;
     }
 
-    public void saveStats(Player player, String fileName)throws Exception{
+    public void saveStats(Player player, String fileName, Game game)throws Exception{
         /**
          * we will be getting the in-game loss and win from the game variable. think about that
          */
@@ -57,8 +58,8 @@ public class PlayerScoreHistory {
         Map<String, Integer> playerMap = data.get(player.getName());
 
         int wins = playerMap.get("wins"), losses = playerMap.get("losses"); 
-        wins += player.getWins(); 
-        losses += player.getLosses();
+        wins += game.getPlayerWinCount(); 
+        losses += game.getPlayerLossCount();
 
         playerMap.put("wins", wins);
         playerMap.put("losses", losses);
@@ -77,7 +78,7 @@ public class PlayerScoreHistory {
 
     /**
      * I want the player to enter their name first, if the name exists on file we tell them it already
-     * exists and if they wanna add on to tht name's history
+     * exists and add on to tht name's history
      * if not we continue and write to the file with the new player's name 
      * 
      * Json file so we will be saving in dictionaries

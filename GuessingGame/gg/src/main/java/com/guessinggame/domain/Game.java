@@ -15,6 +15,7 @@ public class Game {
         this.player = player;
         this.random = new Random();
         this.playerWinCount = 0;
+        this.playerLossCount = 0;
         this.userInterface = new ConsoleUI(scanner);
     }
 
@@ -22,8 +23,8 @@ public class Game {
         userInterface.showMessage("GREETINGS " + player.getName());
         while(true){
             try {
-                int start = userInterface.askForNumber("Enter the start range:");    
-                int end = userInterface.askForNumber("Enter the end range:");
+                int start = userInterface.askForNumber("Enter the start range: (Negative number quits game)");    
+                int end = userInterface.askForNumber("Enter the end range: (Negative number quits game)");
 
                 if (start < 0 || end < 0){
                     break;

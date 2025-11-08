@@ -15,19 +15,16 @@ public class App
         PlayerScoreHistory history = new PlayerScoreHistory();
 
         String name = ui.askForName();
+        Player player = new Player(name);
         String fileName = history.getFileName();
 
-        boolean loadPreviousState = false;
         if (history.playerExists(name, fileName)){
-            loadPreviousState = true;
             ui.showMessage("Welcome back, Old friend");
+            player = history.loadPlayerStats(player, fileName);
         }
         
-
-
-            // Player player = new Player(name);
         
-        Player player = new Player(name);
+        // Player player = new Player(name);
         Game game = new Game(scanner, player);
         game.start();
         /**
