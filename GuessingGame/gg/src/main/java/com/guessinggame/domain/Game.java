@@ -27,16 +27,20 @@ public class Game {
                 int end = userInterface.askForNumber("Enter the end range: (Negative number quits game)");
 
                 if (start < 0 || end < 0){
+                    userInterface.showMessage("GoodBye!");
                     break;
                 }
 
                 int secret = generateSecret(start, end);
 
                 int playerGuess = userInterface.askForNumber("What is your guess?");
-                if (isOutOfRange(playerGuess, start, end)){
-                    userInterface.showMessage("Please enter a number wihtin the range <" + start + '-' + end);
-                    continue;
+                while (isOutOfRange(playerGuess, start, end)) {
+                    userInterface.showMessage(
+                        "Please enter a number within the range <" + start + "-" + end + ">."
+                    );
+                    playerGuess = userInterface.askForNumber("Try again:");
                 }
+                
                 OutCome outcome = getOutcome(secret, playerGuess);
                 this.scoreCounter(outcome);
                 userInterface.showMessage(this.getPlayerWinCount(), this.getPlayerLossCount());
