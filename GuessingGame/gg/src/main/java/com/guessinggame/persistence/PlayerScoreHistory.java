@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import java.util.HashMap;
+import com.guessinggame.ui.ConsoleUI;;
 
 
 public class PlayerScoreHistory {
@@ -57,7 +58,7 @@ public class PlayerScoreHistory {
         Map<String, Map<String, Integer>> data = readPlayerHistoryFile(fileName);
         Map<String, Integer> playerMap = data.get(player.getName());
 
-        int wins = playerMap.get("wins"), losses = playerMap.get("losses"); 
+        int wins = playerMap.getOrDefault("wins",0), losses = playerMap.getOrDefault("losses",0); 
         wins += game.getPlayerWinCount(); 
         losses += game.getPlayerLossCount();
 
@@ -75,6 +76,13 @@ public class PlayerScoreHistory {
         player.setWins(playerMap.get("wins"));
         return player;
     }
+
+    public void showAllTimePlayerStats(Player player, ConsoleUI ui){
+        ui.showMessage("All-Time stats: ");
+        ui.showMessage(player.toString());
+    }
+
+
 
     /**
      * I want the player to enter their name first, if the name exists on file we tell them it already

@@ -20,7 +20,7 @@ public class Game {
     }
 
     public void start(){
-        userInterface.showMessage("GREETINGS " + player.getName());
+        userInterface.showMessage("Greetings " + player.getName());
         while(true){
             try {
                 int start = userInterface.askForNumber("Enter the start range: (Negative number quits game)");    
@@ -81,8 +81,9 @@ public class Game {
     public void scoreCounter(OutCome result){
         if (result == OutCome.WIN){
             this.winIncrement();
+        } else {
+            this.lossIncrement();
         }
-        this.lossIncrement();
     }
 
     public int getPlayerWinCount(){

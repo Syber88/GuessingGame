@@ -16,12 +16,6 @@ public class Player {
     public String getName(){
         return this.name;
     }
-
-    
-
-    // public String allTimeStats(){
-    //     return 
-    // }
     
     public int getWins() {
         return wins;
