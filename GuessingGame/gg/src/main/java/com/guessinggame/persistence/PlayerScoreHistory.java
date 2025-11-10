@@ -56,7 +56,12 @@ public class PlayerScoreHistory {
          * we will be getting the in-game loss and win from the game variable. think about that
          */
         Map<String, Map<String, Integer>> data = readPlayerHistoryFile(fileName);
-        Map<String, Integer> playerMap = data.get(player.getName());
+        Map<String, Integer> playerMap = data.computeIfAbsent(player.getName(), k -> {
+            Map<String, Integer> pm = new HashMap<>();
+            pm.put("wins",0);
+            pm.put("losses", 0);
+            return pm;
+        });
 
         int wins = playerMap.getOrDefault("wins",0), losses = playerMap.getOrDefault("losses",0); 
         wins += game.getPlayerWinCount(); 
@@ -66,7 +71,7 @@ public class PlayerScoreHistory {
         playerMap.put("losses", losses);
 
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writerWithDefaultPrettyPrinter().writeValue(new File(fileName), mapper);
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File(fileName), data);
     }
 
     public Player loadPlayerStats(Player player, String fileName)throws Exception{
