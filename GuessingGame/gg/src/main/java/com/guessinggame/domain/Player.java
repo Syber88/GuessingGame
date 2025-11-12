@@ -10,7 +10,7 @@ public class Player {
     }
 
     public String toString(){
-        return this.name + "Wins: " + this.wins + "\n" + "Losses: " + this.losses;
+        return "Wins: " + this.wins + "\n" + "Losses: " + this.losses;
     }
 
     public String getName(){

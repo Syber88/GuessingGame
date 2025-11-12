@@ -20,20 +20,23 @@ public class Game {
     }
 
     public void start(){
-        userInterface.showMessage("Greetings " + player.getName());
+        userInterface.showMessage("Greetings " + player.getName() + "\n");
         while(true){
             try {
-                int start = userInterface.askForNumber("Enter the start range: (Negative number quits game)");    
+                int start = userInterface.askForNumber("Enter the start range: (Negative number quits game)");
+                Thread.sleep(1000);    
                 int end = userInterface.askForNumber("Enter the end range: (Negative number quits game)");
+                Thread.sleep(1000);
 
                 if (start < 0 || end < 0){
                     userInterface.showMessage("GoodBye!");
                     break;
                 }
-
+                userInterface.showMessage("\nGenerating secret");
+                userInterface.loadingMessageLoop(5);
                 int secret = generateSecret(start, end);
 
-                int playerGuess = userInterface.askForNumber("What is your guess?");
+                int playerGuess = userInterface.askForNumber("\nWhat is your guess?");
                 while (isOutOfRange(playerGuess, start, end)) {
                     userInterface.showMessage(
                         "Please enter a number within the range <" + start + "-" + end + ">."

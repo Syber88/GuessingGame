@@ -2,6 +2,7 @@ package com.guessinggame.persistence;
 
 import com.guessinggame.domain.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
@@ -15,19 +16,30 @@ public class PlayerScoreHistory {
 
     public PlayerScoreHistory(){
         this.fileName = "PlayerScoreHistory.json";
-        createFile(fileName);
+        try{
+            createFile(fileName);
+
+        } catch(IOException e) {
+
+        }
     }
 
     public String getFileName(){
         return this.fileName;
     }
 
-    public void createFile(String fileName){
+    public void createFile(String fileName)throws IOException{
         File file = new File(fileName);
         try {
-            file.createNewFile();
+            if (file.createNewFile()){
+                try(FileWriter writer = new FileWriter(file)){
+                    writer.write("{}");
+                }
+            }
         } catch (IOException e){
+            e.printStackTrace();
         }
+        
     }
 
     public boolean playerExists(String name, String fileName) throws IOException{

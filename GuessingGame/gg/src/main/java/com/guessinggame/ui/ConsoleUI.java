@@ -37,4 +37,11 @@ public class ConsoleUI {
         name = name.toLowerCase();
         return name;
     }
+
+    public void loadingMessageLoop(int number) throws InterruptedException{
+        for (int i = 0; i < number ; i++){
+            Thread.sleep(1000);
+            System.out.print(".");
+        }
+    }
 }
