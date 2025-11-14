@@ -20,21 +20,13 @@ public class App
         if (history.playerExists(name, fileName)){
             ui.showMessage("Welcome back, Old friend");
             player = history.loadPlayerStats(player, fileName);
+        } else {
+            ui.showMessage("Greetings " + player.getName() + "\n");
         }
         
-        
-        // Player player = new Player(name);
-        Game game = new Game(scanner, player);
+        Game game = new Game(scanner);
         history.showAllTimePlayerStats(player, ui);
         game.start();
         history.saveStats(player, fileName, game);
-        /**
-         * after breaking from the loop (start) we will return the player all time stats and average wins and losses
-         * 
-         */
-
-        
-
-        
     }
 }

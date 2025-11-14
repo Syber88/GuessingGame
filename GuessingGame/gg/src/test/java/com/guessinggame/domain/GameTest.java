@@ -19,7 +19,7 @@ public class GameTest {
         Scanner scanner = new Scanner(new ByteArrayInputStream(new byte[0]));
         Player player = new Player("Jimmy Neutron");
         this.player = player;
-        this.game = new Game(scanner, player);
+        this.game = new Game(scanner);
     }
 
     @Test

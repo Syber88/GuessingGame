@@ -15,7 +15,7 @@ public class PlayerScoreHistory {
     private final String fileName;
 
     public PlayerScoreHistory(){
-        this.fileName = "PlayerScoreHistory.json";
+        this.fileName = "GuessingGame/gg/src/PlayerScoreHistory.json";
         try{
             createFile(fileName);
 
