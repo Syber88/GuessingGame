@@ -23,13 +23,13 @@ public class GameService {
         this.repository = repository;
     }
 
-
-    
-
     public void startGame(Player player){
         try {
+            Player loadedPlayer = repository.load(player.getName());
 
-        } catch (Exception e)
+        } catch (Exception e){
+            uo.showOutput("Error: " + e.getMessage());
+        }
 
         while(true){
             try {

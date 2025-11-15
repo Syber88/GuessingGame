@@ -29,6 +29,11 @@ public class ScoreTracker implements  Scores {
     public void recordWin() {
         this.wins++;
     }
+
+    void setScore(int wins, int losses){
+        this.losses = losses;
+        this.wins = wins;
+    }
     
 
 }

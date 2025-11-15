@@ -2,9 +2,9 @@ package com.guessinggame.domain;
 
 public class Player {
     private String name;
-    private Scores score;
+    private ScoreTracker score;
 
-    public Player(String name, Scores score){
+    public Player(String name, ScoreTracker score){
         this.name = name;
         this.score = score;
     }
@@ -23,6 +23,10 @@ public class Player {
 
     public int getLosses() {
         return this.score.getLosses();
+    }
+
+    public void restoreScores(int wins, int losses){
+        this.score.setScore(wins, losses);
     }
 
     @Override
