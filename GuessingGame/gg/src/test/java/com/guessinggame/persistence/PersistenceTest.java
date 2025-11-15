@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Map;
 
 import com.guessinggame.domain.*;
+import com.guessinggame.infrastructure.PlayerScoreHistory;
 
 import org.junit.jupiter.api.BeforeEach;
 

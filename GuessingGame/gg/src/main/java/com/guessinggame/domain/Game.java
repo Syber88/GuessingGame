@@ -50,25 +50,8 @@ public class Game {
         }
     }
 
-    public int generateSecret(int start, int end){
-        return random.nextInt((end - start + 1 ) + start);
-    }
+        
 
-        public boolean isOutOfRange(int playerGuess, int startRange, int endRange){
-            if (playerGuess < startRange || playerGuess > endRange){
-                return true;
-            }
-            return false;
-        }
-
-    public OutCome getOutcome(int secret, int playerGuess){
-        if (playerGuess == secret){
-            userInterface.showMessage(OutCome.WIN.getMessage());
-            return OutCome.WIN;
-        }
-        userInterface.showMessage(OutCome.LOSS.getMessage());
-        return OutCome.LOSS;
-    }
 
     private void winIncrement(){
         this.playerWinCount++;

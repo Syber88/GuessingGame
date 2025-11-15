@@ -1,4 +1,4 @@
-package com.guessinggame.persistence;
+package com.guessinggame.infrastructure;
 
 import com.guessinggame.domain.*;
 import java.io.File;

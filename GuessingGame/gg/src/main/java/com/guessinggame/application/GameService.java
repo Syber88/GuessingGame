@@ -1,12 +1,12 @@
-package com.guessinggame;
+package com.guessinggame.application;
 
 import java.util.Scanner;
 import com.guessinggame.domain.Game;
 import com.guessinggame.domain.Player;
-import com.guessinggame.persistence.PlayerScoreHistory;
+import com.guessinggame.infrastructure.PlayerScoreHistory;
 import com.guessinggame.ui.*;
 
-public class App 
+public class GameService 
 {
     public static void main( String[] args ) throws Exception{
         Scanner scanner = new Scanner(System.in);
