@@ -5,15 +5,13 @@ import com.guessinggame.ui.ConsoleUI;
 import java.util.Random;
 
 public class Game {
-    private int playerWinCount;
-    private int playerLossCount;
+    
     private ConsoleUI userInterface;
     private Random random;
 
     public Game(Scanner scanner){
         this.random = new Random();
-        this.playerWinCount = 0;
-        this.playerLossCount = 0;
+        
         this.userInterface = new ConsoleUI(scanner);
     }
 
@@ -53,27 +51,5 @@ public class Game {
         
 
 
-    private void winIncrement(){
-        this.playerWinCount++;
-    }
-
-    private void lossIncrement(){
-        this.playerLossCount++;
-    }
     
-    public void scoreCounter(OutCome result){
-        if (result == OutCome.WIN){
-            this.winIncrement();
-        } else {
-            this.lossIncrement();
-        }
-    }
-
-    public int getPlayerWinCount(){
-        return this.playerWinCount;
-    }
-
-    public int getPlayerLossCount(){
-        return this.playerLossCount;
-    }
 }
