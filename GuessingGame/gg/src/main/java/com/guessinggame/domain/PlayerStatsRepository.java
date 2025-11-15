@@ -1,6 +1,6 @@
 package com.guessinggame.domain;
 
-public interface IPlayerStatsRepository {
+public interface PlayerStatsRepository {
 
     Player load (String name);
     void save(Player player);

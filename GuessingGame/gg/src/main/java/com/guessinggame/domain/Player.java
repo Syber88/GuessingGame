@@ -2,15 +2,15 @@ package com.guessinggame.domain;
 
 public class Player {
     private String name;
-    private int wins;
-    private int losses;
+    private Scores score;
 
-    public Player(String name){
+    public Player(String name, Scores score){
         this.name = name;
+        this.score = score;
     }
 
     public String toString(){
-        return "Wins: " + this.wins + "\n" + "Losses: " + this.losses;
+        return "Wins: " + this.getWins() + "\n" + "Losses: " + this.getLosses();
     }
 
     public String getName(){
@@ -18,19 +18,11 @@ public class Player {
     }
     
     public int getWins() {
-        return wins;
+        return this.score.getWins();
     }
 
     public int getLosses() {
-        return losses;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    public void setLosses(int losses) {
-        this.losses = losses;
+        return this.score.getLosses();
     }
 
     @Override
@@ -51,7 +43,7 @@ public class Player {
         }
 
         Player objPlayer = (Player) obj;
-        if (this.name == objPlayer.name){
+        if (this.name.equals(objPlayer.name)){
             return true;
         }
         return false;

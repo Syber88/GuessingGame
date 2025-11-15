@@ -1,6 +1,6 @@
 package com.guessinggame.domain;
 
-public interface IUserInput {
+public interface UserInput {
 
     int askForNumber();
     String askForString();

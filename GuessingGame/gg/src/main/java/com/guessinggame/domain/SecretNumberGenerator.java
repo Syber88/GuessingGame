@@ -1,6 +1,6 @@
 package com.guessinggame.domain;
 
-public interface ISecretNumberGenerator {
+public interface SecretNumberGenerator {
 
     int generateSecreteNumber();
 }

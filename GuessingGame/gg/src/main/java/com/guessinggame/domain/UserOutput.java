@@ -1,6 +1,6 @@
 package com.guessinggame.domain;
 
-public interface IUserOutput {
+public interface UserOutput {
 
     void showOutput();
 

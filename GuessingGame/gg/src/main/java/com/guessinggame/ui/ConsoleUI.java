@@ -4,7 +4,7 @@ import com.guessinggame.domain.*;
 import java.util.Scanner;
 
 
-public class ConsoleUI implements IUserInput, IUserOutput{
+public class ConsoleUI implements UserInput, UserOutput{
     private Scanner scanner;
 
     public ConsoleUI(Scanner scanner){

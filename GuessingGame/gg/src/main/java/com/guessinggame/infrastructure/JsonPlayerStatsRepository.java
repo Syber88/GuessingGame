@@ -2,7 +2,7 @@ package com.guessinggame.infrastructure;
 
 import com.guessinggame.domain.*;;
 
-public class JsonPlayerStatsRepository implements IPlayerStatsRepository{
+public class JsonPlayerStatsRepository implements PlayerStatsRepository{
 
     @Override
     public Player load(String name) {

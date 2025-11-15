@@ -11,12 +11,12 @@ public class ScoreTracker implements  Scores {
     }
 
     @Override
-    public int getPlayerLossCount() {
+    public int getLosses() {
         return this.losses;
     }
 
     @Override
-    public int getPlayerWinCount() {
+    public int getWins() {
         return this.wins;
     }
 
