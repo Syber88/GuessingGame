@@ -26,40 +26,20 @@ public class GameService {
     public void startGame(Player player){
         try {
             Player loadedPlayer = repository.load(player.getName());
+            if (loadedPlayer != null){
+                player = loadedPlayer;
+                uo.showOutput("Welcome back, " + player.getName() + " !");
+            } else {
+                uo.showOutput("New player: " + player.getName());
+            }
+
+            boolean running = true;
+            while (running){
+                ui.askForNumber();
+            }
 
         } catch (Exception e){
             uo.showOutput("Error: " + e.getMessage());
-        }
-
-        while(true){
-            try {
-                int start = userInterface.askForNumber("Enter the start range: (Negative number quits game)");
-                Thread.sleep(1000);    
-                int end = userInterface.askForNumber("Enter the end range: (Negative number quits game)");
-                Thread.sleep(1000);
-
-                if (start < 0 || end < 0){
-                    userInterface.showMessage("GoodBye!");
-                    break;
-                }
-                userInterface.showMessage("\nGenerating secret");
-                userInterface.loadingMessageLoop(5);
-                int secret = generateSecret(start, end);
-
-                int playerGuess = userInterface.askForNumber("\nWhat is your guess?");
-                while (isOutOfRange(playerGuess, start, end)) {
-                    userInterface.showMessage(
-                        "Please enter a number within the range <" + start + "-" + end + ">."
-                    );
-                    playerGuess = userInterface.askForNumber("Try again:");
-                }
-                
-                OutCome outcome = getOutcome(secret, playerGuess);
-                this.scoreCounter(outcome);
-                userInterface.showMessage(this.getPlayerWinCount(), this.getPlayerLossCount());
-            } catch (Exception e){
-                System.out.println("Error: " + e.getMessage());
-            }
         }
     }
 }
