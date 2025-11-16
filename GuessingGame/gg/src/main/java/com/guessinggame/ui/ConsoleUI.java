@@ -15,24 +15,23 @@ public class ConsoleUI implements UserInput, UserOutput{
 
     @Override
     public int askForNumber(String message) {
-
-        int number = Integer.parseInt(scanner.nextLine())
-        return 0;
+        showOutput(message);
+        int number = Integer.parseInt(scanner.nextLine());
+        return number;
     }
 
 
 
     @Override
-    public String askForString() {
-        // TODO Auto-generated method stub
-        return null;
+    public String askForString(String message) {
+        System.out.println(message);
+        return scanner.nextLine();
     }
 
 
 
     @Override
-    public void showOutput() {
-        
-        
+    public void showOutput(String message) {
+        System.out.println(message);
     }
 }

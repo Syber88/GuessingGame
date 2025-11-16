@@ -35,7 +35,13 @@ public class GameService {
 
             boolean running = true;
             while (running){
-                ui.askForNumber();
+                int start = ui.askForNumber("Enter start range (Negative number quits):");
+                if ( start < 0 ) break;
+
+                int end = ui.askForNumber("Enter the end range (Negative number quits):");
+                if (end < 0) break;
+
+                generator.generateSecreteNumber();
             }
 
         } catch (Exception e){
