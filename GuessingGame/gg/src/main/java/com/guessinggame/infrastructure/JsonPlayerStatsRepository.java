@@ -20,9 +20,15 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
         try {
             Map<String, Map<String, Integer>> data = readFile(filename);
             Map<String,Integer>playerMap = data.get(name);
-            Player player = new Player(name, new ScoreTracker());
+
+            if (playerMap == null) {
+                return new Player(name, new ScoreTracker()); 
+            }
+
             int losses = playerMap.getOrDefault("losses",0);
-            int wins = playerMap.get("wins");
+            int wins = playerMap.getOrDefault("wins",0);
+
+            Player player = new Player(name, new ScoreTracker());
             player.restoreScores(wins, losses);
             return player;
 
@@ -36,12 +42,7 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
     public void save(Player player) {
         try {
             Map<String, Map<String, Integer>> data = readFile(filename);
-            Map<String, Integer> playerMap = data.computeIfAbsent(player.getName(), k -> {
-                Map<String, Integer> pm = new HashMap<>();
-                pm.put("wins",0);
-                pm.put("losses", 0);
-                return pm;
-            });
+            Map<String, Integer> playerMap = playerRetriever(player, data);
     
             int wins = playerMap.getOrDefault("wins",0), losses = playerMap.getOrDefault("losses",0); 
             wins += player.getWins();
@@ -56,7 +57,6 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
         } catch (IOException e){
             System.out.println("Error opening file: " + e.getMessage());
         }
-        
     }
 
     public Map<String, Map<String, Integer>> readFile(String fileName) throws IOException{
@@ -77,6 +77,15 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
             return true;
         }
         return false;
+    }
+
+    public Map<String, Integer> playerRetriever (Player player, Map<String, Map<String, Integer>> data ){
+        return data.computeIfAbsent(player.getName(), k -> {
+                Map<String, Integer> pm = new HashMap<>();
+                pm.put("wins",0);
+                pm.put("losses", 0);
+                return pm;
+            });
     }
 
 }
