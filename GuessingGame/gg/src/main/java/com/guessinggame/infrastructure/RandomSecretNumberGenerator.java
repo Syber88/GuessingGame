@@ -1,12 +1,15 @@
 package com.guessinggame.infrastructure;
 
-import com.guessinggame.domain.*;;
+import com.guessinggame.domain.*;
+import java.util.Random;
 
 public class RandomSecretNumberGenerator implements SecretNumberGenerator{
+    private Random random;
 
     @Override
-    public int generateSecreteNumber() {
-        return 0;
+    public int generateSecreteNumber(int start, int end) {
+        random = new Random();
+        return random.nextInt((end - start + 1) + start);
     }
 
     

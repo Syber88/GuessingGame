@@ -41,7 +41,16 @@ public class GameService {
                 int end = ui.askForNumber("Enter the end range (Negative number quits):");
                 if (end < 0) break;
 
-                generator.generateSecreteNumber();
+                if (start >= end){
+                    uo.showOutput("The start of the range should not be greateer than the end");
+                    continue;
+                }
+
+                uo.showOutput("Generating secret");
+                /*
+                 * loading screen type of situation here
+                 */
+                int secret = generator.generateSecreteNumber(start, end);
             }
 
         } catch (Exception e){
