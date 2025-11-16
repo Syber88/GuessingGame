@@ -43,13 +43,14 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
         try {
             Map<String, Map<String, Integer>> data = readFile(filename);
             Map<String, Integer> playerMap = playerRetriever(player, data);
-    
-            int wins = playerMap.getOrDefault("wins",0), losses = playerMap.getOrDefault("losses",0); 
-            wins += player.getWins();
-            losses += player.getLosses();
+
+            int wins = player.getLifetimeWins() + player.getSessionWins();
+            int losses = player.getLifetimeLosses() + player.getSessionLosses();
+            player.resetGameScores();
     
             playerMap.put("wins", wins);
             playerMap.put("losses", losses);
+
     
             ObjectMapper mapper = new ObjectMapper();
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(filename), data);
@@ -71,14 +72,6 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
         return data;
     }
 
-    public boolean playerExists(String name, String fileName) throws IOException{
-        Map<String, Map<String, Integer>> data = readFile(fileName);
-        if (data.containsKey(name)){
-            return true;
-        }
-        return false;
-    }
-
     public Map<String, Integer> playerRetriever (Player player, Map<String, Map<String, Integer>> data ){
         return data.computeIfAbsent(player.getName(), k -> {
                 Map<String, Integer> pm = new HashMap<>();
@@ -86,6 +79,10 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
                 pm.put("losses", 0);
                 return pm;
             });
+    }
+
+    public void resetSessionScores(Player player){
+        player.resetGameScores();
     }
 
 }

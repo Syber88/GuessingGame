@@ -3,30 +3,46 @@ package com.guessinggame.domain;
 public class Player {
     private String name;
     private ScoreTracker score;
+    private int lifetimeWins;
+    private int lifetimeLosses;
 
     public Player(String name, ScoreTracker score){
         this.name = name;
         this.score = score;
+        
     }
 
     public String toString(){
-        return "Wins: " + this.getWins() + "\n" + "Losses: " + this.getLosses();
+        return "Wins: " + this.getLifetimeWins() + "\n" + "Losses: " + this.getLifetimeLosses();
     }
 
     public String getName(){
         return this.name;
     }
-    
-    public int getWins() {
-        return this.score.getWins();
-    }
 
-    public int getLosses() {
+    public int getSessionWins(){
+        return this.score.getWins();
+    } 
+
+    public int getSessionLosses(){
         return this.score.getLosses();
     }
+    
+    public int getLifetimeWins() {
+        return this.lifetimeWins;
+    }
 
-    public void restoreScores(int wins, int losses){
-        this.score.setScore(wins, losses);
+    public int getLifetimeLosses() {
+        return this.lifetimeLosses;
+    }
+
+    public void restoreScores(int lifetimeWins, int lifetimeLosses){
+        this.lifetimeWins = lifetimeWins;
+        this.lifetimeLosses = lifetimeLosses;
+    }
+
+    public void resetGameScores(){
+        this.score.setScore(0, 0);
     }
 
     @Override
