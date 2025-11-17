@@ -1,6 +1,5 @@
 package com.guessinggame.application;
 
-import java.util.Scanner;
 import com.guessinggame.domain.OutCome;
 import com.guessinggame.domain.*;
 

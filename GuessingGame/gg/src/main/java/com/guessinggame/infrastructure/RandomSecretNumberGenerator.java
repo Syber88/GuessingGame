@@ -7,7 +7,7 @@ public class RandomSecretNumberGenerator implements SecretNumberGenerator{
     private Random random;
 
     @Override
-    public int generateSecreteNumber(int start, int end) {
+    public int generateSecretNumber(int start, int end) {
         random = new Random();
         return random.nextInt((end - start + 1) + start);
     }

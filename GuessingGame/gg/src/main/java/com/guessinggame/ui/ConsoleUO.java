@@ -3,6 +3,7 @@ package com.guessinggame.ui;
 import com.guessinggame.domain.UserOutput;
 
 public class ConsoleUO implements UserOutput{
+    
 
 
      @Override

@@ -2,6 +2,7 @@ package com.guessinggame.infrastructure;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class JsonPlayerStatsRepository implements PlayerStatsRepository{
     private final String filename;
 
     public JsonPlayerStatsRepository(){
-        this.filename = "GuessingGame/gg/src/PlayerScoreHistory.json";
+        this.filename = Paths.get(System.getProperty("user.dir"), "PlayerScoreHistory.json").toString();
     }
 
     @Override
