@@ -13,14 +13,12 @@ public class ConsoleUO implements UserOutput{
 
     public void loadingLoop(){
         try {
-            Thread.sleep(1000);
             for (int i = 0; i < 5; i++){
                 System.out.print(".");
+                Thread.sleep(1000);
             }
-
         } catch (InterruptedException e){
             System.out.println("Error :" + e.getMessage());
         }
-        
     }
 }

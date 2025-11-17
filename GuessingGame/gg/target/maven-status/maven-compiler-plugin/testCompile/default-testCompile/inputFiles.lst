@@ -1,2 +1,4 @@
-/mnt/c/Users/siyam/Desktop/GuessingGame/GuessingGame/gg/src/test/java/com/guessinggame/domain/GameTest.java
-/mnt/c/Users/siyam/Desktop/GuessingGame/GuessingGame/gg/src/test/java/com/guessinggame/persistence/PersistenceTest.java
+/home/Syber/Desktop/Java/GuessingGame/gg/src/test/java/com/guessinggame/domain/GameRulesTest.java
+/home/Syber/Desktop/Java/GuessingGame/gg/src/test/java/com/guessinggame/domain/GameTest.java
+/home/Syber/Desktop/Java/GuessingGame/gg/src/test/java/com/guessinggame/domain/ScoreTests.java
+/home/Syber/Desktop/Java/GuessingGame/gg/src/test/java/com/guessinggame/persistence/PersistenceTest.java

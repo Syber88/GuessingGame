@@ -52,7 +52,7 @@ public class GameService {
                 uo.loadingLoop();
                 int secret = generator.generateSecretNumber(start, end);
 
-                int guess = ui.askForNumber("What is your guess?");
+                int guess = ui.askForNumber("\nWhat is your guess?");
                 while (rules.isOutOfRange(guess, start, end)){
                     uo.showOutput("Please pick a number within the range <" + start + "-" + end + ">");
                     guess = ui.askForNumber("What is your guess?");
