@@ -20,6 +20,14 @@ public class Player {
         return this.name;
     }
 
+    public void recordWin(){
+        this.score.recordWin();
+    }
+
+    public void recordLoss(){
+        this.score.recordLoss();
+    }
+
     public int getSessionWins(){
         return this.score.getWins();
     } 

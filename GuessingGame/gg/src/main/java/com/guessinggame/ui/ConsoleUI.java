@@ -4,7 +4,7 @@ import com.guessinggame.domain.*;
 import java.util.Scanner;
 
 
-public class ConsoleUI implements UserInput, UserOutput{
+public class ConsoleUI implements UserInput{
     private Scanner scanner;
 
     public ConsoleUI(Scanner scanner){
@@ -15,7 +15,7 @@ public class ConsoleUI implements UserInput, UserOutput{
 
     @Override
     public int askForNumber(String message) {
-        showOutput(message);
+        System.out.println(message);
         int number = Integer.parseInt(scanner.nextLine());
         return number;
     }
@@ -30,8 +30,5 @@ public class ConsoleUI implements UserInput, UserOutput{
 
 
 
-    @Override
-    public void showOutput(String message) {
-        System.out.println(message);
-    }
+   
 }

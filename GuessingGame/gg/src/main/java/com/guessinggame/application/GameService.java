@@ -50,8 +50,25 @@ public class GameService {
                 /*
                  * loading screen type of situation here
                  */
-                int secret = generator.generateSecreteNumber(start, end);
+                uo.loadingLoop();
+                int secret = generator.generateSecretNumber(start, end);
+
+                int guess = ui.askForNumber("What is your guess?");
+                while (rules.isOutOfRange(guess, start, end)){
+                    uo.showOutput("Please pick a number within the range <" + start + "-" + end + ">");
+                    guess = ui.askForNumber("What is your guess?");
+                }
+
+                OutCome outcome = rules.getOutcome(secret, guess);
+                uo.showOutput(outcome.getMessage());
+                if (outcome == OutCome.WIN){
+                    player.recordWin();
+                } else {
+                    player.recordLoss();
+                }
             }
+
+            repository.save(player);
 
         } catch (Exception e){
             uo.showOutput("Error: " + e.getMessage());

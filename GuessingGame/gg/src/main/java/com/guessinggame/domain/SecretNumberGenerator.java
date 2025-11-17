@@ -2,5 +2,5 @@ package com.guessinggame.domain;
 
 public interface SecretNumberGenerator {
 
-    int generateSecreteNumber(int start, int end);
+    int generateSecretNumber(int start, int end);
 }
