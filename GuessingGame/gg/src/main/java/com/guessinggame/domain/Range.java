@@ -2,6 +2,7 @@ package com.guessinggame.domain;
 
 import java.util.Objects;
 
+/*could have made it a record but project is build on java 11, so a new class was created instead*/
 public class Range {
     private int start;
     private int end;
