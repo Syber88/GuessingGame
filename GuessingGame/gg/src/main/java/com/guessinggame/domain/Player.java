@@ -2,35 +2,55 @@ package com.guessinggame.domain;
 
 public class Player {
     private String name;
-    private int wins;
-    private int losses;
+    private ScoreTracker score;
+    private int lifetimeWins;
+    private int lifetimeLosses;
 
-    public Player(String name){
+    public Player(String name, ScoreTracker score){
         this.name = name;
+        this.score = score;
+        
     }
 
     public String toString(){
-        return "Wins: " + this.wins + "\n" + "Losses: " + this.losses;
+        return "Wins: " + this.getLifetimeWins() + "\n" + "Losses: " + this.getLifetimeLosses();
     }
 
     public String getName(){
         return this.name;
     }
+
+    public void recordWin(){
+        this.score.recordWin();
+    }
+
+    public void recordLoss(){
+        this.score.recordLoss();
+    }
+
+    public int getSessionWins(){
+        return this.score.getWins();
+    } 
+
+    public int getSessionLosses(){
+        return this.score.getLosses();
+    }
     
-    public int getWins() {
-        return wins;
+    public int getLifetimeWins() {
+        return this.lifetimeWins;
     }
 
-    public int getLosses() {
-        return losses;
+    public int getLifetimeLosses() {
+        return this.lifetimeLosses;
     }
 
-    public void setWins(int wins) {
-        this.wins = wins;
+    public void restoreScores(int lifetimeWins, int lifetimeLosses){
+        this.lifetimeWins = lifetimeWins;
+        this.lifetimeLosses = lifetimeLosses;
     }
 
-    public void setLosses(int losses) {
-        this.losses = losses;
+    public void resetGameScores(){
+        this.score.setScore(0, 0);
     }
 
     @Override
@@ -51,7 +71,7 @@ public class Player {
         }
 
         Player objPlayer = (Player) obj;
-        if (this.name == objPlayer.name){
+        if (this.name.equals(objPlayer.name)){
             return true;
         }
         return false;
