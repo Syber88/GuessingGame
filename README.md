@@ -2,11 +2,11 @@
 
 A command-line number guessing game built with Java and Maven, featuring clean architecture with separation of concerns, persistent player statistics, and comprehensive test coverage.
 
-## 🎮 Game Overview
+##  Game Overview
 
 The Guessing Game challenges players to guess a randomly generated secret number within a specified range. Players have 4 attempts per round to guess correctly. All game statistics are automatically saved and persist across sessions.
 
-## ✨ Features
+##  Features
 
 - **Custom Range Selection**: Players can define their own min/max range for each round
 - **Multiple Attempts**: 4 chances per round to guess the correct number
@@ -16,7 +16,7 @@ The Guessing Game challenges players to guess a randomly generated secret number
 - **Clean Architecture**: Domain-driven design with clear separation of concerns
 - **Comprehensive Testing**: Unit tests for domain logic and persistence layer
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 gg/
@@ -55,7 +55,7 @@ gg/
 └── target/                          # Compiled output
 ```
 
-## 🏗️ Architecture
+##  Architecture
 
 The project follows a clean architecture pattern with clear layer separation:
 
@@ -80,7 +80,7 @@ Manages all user interaction through the console:
 - **ConsoleUI**: Handles user input with validation
 - **ConsoleUO**: Manages formatted output to console
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Java 11 or higher
@@ -107,7 +107,7 @@ mvn clean package
 java -jar target/gg-1.0-SNAPSHOT.jar
 ```
 
-## 🎯 How to Play
+##  How to Play
 
 1. **Enter your name** when prompted
 2. **Set the range** for the secret number (e.g., 1 to 100)
@@ -135,7 +135,7 @@ What is your guess?
 Congratulations! You won!
 ```
 
-## 💾 Score Persistence
+##  Score Persistence
 
 Player statistics are automatically saved to `PlayerScoreHistory.json`:
 
@@ -154,7 +154,7 @@ Player statistics are automatically saved to `PlayerScoreHistory.json`:
 
 The file is created automatically on first save and updated after each game session.
 
-## 🧪 Testing
+##  Testing
 
 Run the full test suite:
 ```bash
@@ -171,14 +171,14 @@ mvn clean test jacoco:report
 - **Persistence**: JSON serialization/deserialization
 - **Player Stats**: Win/loss tracking and calculations
 
-## 🔧 Configuration
+##  Configuration
 
 The game is currently configured with:
 - **4 attempts** per round (modifiable in `GameService.java`)
 - **JSON persistence** (can be swapped with any `PlayerStatsRepository` implementation)
 - **Console UI** (can be replaced with GUI by implementing interfaces)
 
-## 🛠️ Development
+## Development
 
 ### Key Design Patterns
 - **Dependency Injection**: All dependencies are injected through constructors
@@ -197,11 +197,8 @@ To add a new persistence mechanism:
 1. Implement the `PlayerStatsRepository` interface
 2. Inject the new implementation in `Main.java`
 
-## 🐛 Known Issues
 
-None currently reported. Please submit issues via the project repository.
-
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 - [ ] Multiple difficulty levels (easy/medium/hard)
 - [ ] Global leaderboard functionality
@@ -212,11 +209,11 @@ None currently reported. Please submit issues via the project repository.
 - [ ] Achievement system
 - [ ] Sound effects and animations
 
-## 📄 License
+##  License
 
 MIT License - feel free to use and modify as needed.
 
-## 👥 Contributing
+##  Contributing
 
 Contributions are welcome! Please ensure:
 - All tests pass before submitting
@@ -224,7 +221,6 @@ Contributions are welcome! Please ensure:
 - Code follows the existing architecture patterns
 - Documentation is updated accordingly
 
-## 🙏 Acknowledgments
 
 Built as a demonstration of clean architecture principles in Java, showcasing:
 - Domain-driven design
